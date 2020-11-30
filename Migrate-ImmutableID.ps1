@@ -28,7 +28,8 @@ foreach($user in $users)
     {
         $imuid = [system.convert]::ToBase64String((Get-ADUser $samAccountName).objectGUid.ToByteArray())
         Set-MsolUser -UserPrincipalName $o365Upn `
-                     -ImmutableId $imuid
+                     -ImmutableId $imuid `
+                     -ErrorAction Stop
     }
     catch
     {
@@ -39,7 +40,7 @@ foreach($user in $users)
 
 if($failed.Count -gt 0)
 {
-    Write-Host "`nThe following users were NOT update successfully:"
+    Write-Host "`nThe following users were NOT updated successfully:"
 
     foreach($user in $failed)
     {

@@ -32,7 +32,8 @@ foreach($user in $users)
         Set-ADUser -Identity $samAccountName `
                    -EmailAddress $smtpAddress `
                    -UserPrincipalName $smtpAddress `
-                   -replace @{ProxyAddresses="SMTP:$($smtpAddress),SIP:$($smtpAddress)" -Split ","}
+                   -replace @{ProxyAddresses="SMTP:$($smtpAddress),SIP:$($smtpAddress)" -Split ","} `
+                   -ErrorAction Stop
     }
     catch 
     {
@@ -53,7 +54,7 @@ foreach($user in $users)
 
 if($failed.Count -gt 0)
 {
-    Write-Host "`nThe following users were NOT update successfully:"
+    Write-Host "`nThe following users were NOT updated successfully:"
 
     foreach($user in $failed)
     {
