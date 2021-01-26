@@ -1,11 +1,8 @@
 <#
-    This script generates a report to aid planning
-    of VM migrations between storage locations or simply to
-    provide a report showing the location, type and size
-    of the VM's VHDs.
+    This script generates a report of a Hyper-V Cluster.
     Author: Renato Montenegro Rustici
-    October/2020
-    Feel free to copy, modify, enhance and distribute this scrip
+    January/2021
+    Feel free to copy, modify, enhance and distribute this script
 #>
 
 $report = New-Object System.Data.DataTable
